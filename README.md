@@ -52,3 +52,4 @@ Orange OS
 
 + 先了解Git,以[廖雪峰的git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)为参考
 + 接着学习[markdown简要语法](http://sspai.com/25137)与[markdown语法](http://wowubuntu.com/markdown/#list)
++ 本书要求读者应具备汇编语言和c语言的编程经验,汇编语言我看的是王爽的&lt;汇编语言&gt;
