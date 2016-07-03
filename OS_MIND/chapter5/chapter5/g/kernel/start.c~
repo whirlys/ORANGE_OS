@@ -37,6 +37,4 @@ PUBLIC void cstart()
 
 	disp_str("-----\"cstart\" ends-----\n");
 	disp_str("-----  hello world  -----\n");
-	disp_str("\n\n\n\n");
-	disp_str("-----   colorful    -----\n");
 }

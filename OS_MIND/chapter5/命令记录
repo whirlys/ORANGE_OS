@@ -1,14 +1,51 @@
 
-
 ======================================
 
 chapter5/f  运行程序命令记录
 
 ======================================
 
+# 先制作内核
+
 nasm -f elf -o kernel.o kernel.asm
 nasm -f elf -o string.o string.asm
 nasm -f elf -o kliba.o kliba.asm
 gcc -c -m32 -fno-builtin -o start.o start.c
 ld -s -m elf_i386 -Ttext 0x30400 -o kernel.bin kernel.o string.o start.o kliba.o
+
+
+# 再制作磁盘和引导程序
+
+bximage  #生成a.img软盘
+
+nasm boot.asm -o boot.bin	#引导扇区,加载引导程序
+nasm loader.asm -o loader.bin	#编译引导程序,引导内核
+# 注意,程序名一定要是loader.bin,否则会no loader
+
+dd if=boot.bin of=a.img bs=512 count=1 conv=notrunc	
+
+sudo mount -o loop a.img /mnt/floppy
+sudo cp -fv loader /mnt/floppy
+sudo cp -fv kernel.bin /mnt/floppy
+sudo umount /mnt/floppy
+
 bochs
+c
+
+========================================
+
+chapter6/g 运行程序命令记录
+
+=========================================
+
+# 修改Makefile:
+第20,21行: 分别增加 -m32 和 -m elf_i386
+CFLAGS		= -I include/ -c -m32 -fno-builtin 
+LDFLAGS		= -s -m elf_i386 -Ttext $(ENTRYPOINT)  
+
+#$  执行 
+make image
+bochs
+c
+
+=======================================

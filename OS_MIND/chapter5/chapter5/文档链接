@@ -1,0 +1,5 @@
+Linux 内核中断的秘密  :  https://www.ibm.com/developerworks/cn/linux/l-cn-linuxkernelint/
+
+Intel8259的初始化命令	:	http://netclass.csu.edu.cn/NCourse/hep088/content/chapter5/5-4/5-4-0.htm
+
+ 8259的初始化流程	: 	http://netclass.csu.edu.cn/NCourse/hep088/content/chapter5/5-4/5-4-2.htm

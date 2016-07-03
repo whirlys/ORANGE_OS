@@ -1,0 +1,43 @@
+http://blog.csdn.net/u013897132/article/details/45014981
+
+今天学习bochs的使用，遇到了一些问题，把它们记录下来。
+
+一直搞不掂的是配置文件的问题。
+
+一开始我###############################################################
+# Configuration file for Bochs
+###############################################################
+
+# how much memory the emulated machine will have
+megs: 32
+
+# filename of ROM images
+romimage: file=/你bochs-2.4.6的路径/bios/BIOS-bochs-latest
+vgaromimage: file=你bochs-2.4.6的路径/bios/VGABIOS-lgpl-latest
+
+# what disk images will be used 
+floppya: 1_44=pm.img, status=inserted
+
+# choose the boot disk.
+boot: floppy
+
+# where do we send log messages?
+log: bochsout.txt
+
+# disable the mouse
+mouse: enabled=0
+
+# enable key mapping, using US layout as default.
+keyboard_mapping: enabled=1, map=你bochs-2.4.6的路径/gui/keymaps/x11-pc-us.map
+然后它报错 'keyboard_mapping' is deprecated - use 'keyboard' option instead.恩，于是我就直接用keyboard直接代替，他又和我说keyboard directive malformed.大概就是参数错误的意思，然后我就一直百度，想说大家或许有遇到和我一样问题的，结果都没发现。可能是因为用的bochs版本不同吧。然后我灵机一动去看他的sample-txt，知道了keyboard的参数格式，才解决。
+把最后一行换做
+keyboard:keymap=/usr/local/share/bochs/keymaps/x11-pc-de.map  
+问题解决
+
+然后又遇到第二个问题 
+[BIOS ] No bootable device.
+网上都说是boot.asm最后一行没有加dw  0xaa55,这是结束符标志
+或者是生成的boot.bin不是512byte，
+所以要添加 times 510-($-$$) db 0 填充满512字节
+不过我看我两端代码都有，猜想可能是dd运行失败，于是重新运行了一次dd，然后就成功了。
+虽然我没少那两句代码，但读者可能少了，写下来让大家参考一下
