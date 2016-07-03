@@ -1,0 +1,14 @@
+
+
+======================================
+
+chapter5/f  运行过程中的命令
+
+======================================
+
+nasm -f elf -o kernel.o kernel.asm
+nasm -f elf -o string.o string.asm
+nasm -f elf -o kliba.o kliba.asm
+gcc -c -m32 -fno-builtin -o start.o start.c
+ld -s -m elf_i386 -Ttext 0x30400 -o kernel.bin kernel.o string.o start.o kliba.o
+bochs
