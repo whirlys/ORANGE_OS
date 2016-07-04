@@ -49,3 +49,33 @@ bochs
 c
 
 =======================================
+
+chapter6/h  运行程序命令记录
+
+=======================================
+
+# 记得先把bochs中的第10行加上 file=
+
+# 最后一行改为 : keyboard: keymap=
+
+#Makefile中第20行: CFLAGS 加上 -m32
+第21行		:  LDFLAGS 加上 -m elf_i386
+
+make image
+
+出现错误:
+ld -s -m elf_i386 -Ttext 0x30400 -o kernel.bin kernel/kernel.o kernel/start.o kernel/i8259.o kernel/global.o kernel/protect.o lib/klib.o lib/kliba.o lib/string.o
+lib/klib.o：在函数‘disp_int’中：
+klib.c:(.text+0xe6)：对‘__stack_chk_fail’未定义的引用
+make: *** [kernel.bin] 错误 1
+
+------------------------------------------------
+# 解决办法: 在顶层的Makefile里找到CFLAGS然后添加-fno-stack-protector标志
+
+make clean 
+make image
+bochs
+c
+
+=================================================
+
