@@ -1,0 +1,23 @@
+nasm pmtest3.asm -o pmtest.com
+
+bximage 	#生成pm.img,此时pm.img是不能挂载的.要格式化成某一文件系统才能被读取
+
+dd if=/dev/null of=pm.img bs=512 count=1 conv=notrunc 
+
+sudo losetup /dev/loop0 pm.img	#若说loop0 busy,则换成loop1或loop2等试一下,知道可以为止
+
+sudo mkfs.msdos /dev/loop0
+
+sudo fsck.msdos /dev/loop0
+
+sudo losetup -d /dev/loop0
+
+sudo mount -o loop pm.img /mnt/floppy #这时候才能挂载
+
+sudo cp pmtest3.com /mnt/floppy
+
+sudo umount /mnt/floppy
+
+bochs
+
+c

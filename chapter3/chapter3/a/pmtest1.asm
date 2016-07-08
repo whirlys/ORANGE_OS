@@ -51,7 +51,7 @@ LABEL_BEGIN:
 	add	eax, LABEL_GDT		; eax <- gdt 基地址
 	mov	dword [GdtPtr + 2], eax	; [GdtPtr + 2] <- gdt 基地址
 
-	; 加载 GDTR
+	; 加载 GDTR,将GdtPtr的六个字节加载到gdtr
 	lgdt	[GdtPtr]
 
 	; 关中断

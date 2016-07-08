@@ -14,5 +14,6 @@ DispStr:
 	int	10h			; 10h 号中断
 	ret
 BootMessage:		db	"Hello, OS world!"
+
 times 	510-($-$$)	db	0	; 填充剩下的空间，使生成的二进制代码恰好为512字节
 dw 	0xaa55				; 结束标志

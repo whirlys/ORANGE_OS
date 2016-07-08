@@ -52,3 +52,7 @@ sudo losetup -d /dev/loop0
 sudo mount -o loop pm.img /mnt/floppy   
 挂载成功！！！继续实验lo～～～
 
+
+##  如果使用sudo losetup /dev/loop0  pm.img命令时系统提示错误：losetup: /dev/loop0: device is busy。
+说明有设备在使用 loopback 设备 ，我们可以用 /dev/loop１或 /dev/loop２来 代替 /dev/loop０，直到有一个空闲的 loopback 设备。
+所以我们把命令该为 sudo losetup /dev/loop1 pm.img
