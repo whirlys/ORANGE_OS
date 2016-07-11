@@ -32,5 +32,5 @@ $(LDR_BIN) : $(LDR)
 
 $(KERNEL_BIN) : $(KERNEL)
 	nasm -f elf -o $(subst .asm,.o,$(KERNEL)) $<
-	ld -s -o $@ $(subst .asm,.o,$(KERNEL))
+	ld -s -m elf_i386 -o $@ $(subst .asm,.o,$(KERNEL))
 
