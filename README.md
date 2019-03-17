@@ -31,7 +31,7 @@
 
 -------------------------------
 
-###主要工具: 
+### 主要工具: 
 + ubuntu14.04 
 + gedit ----文本编辑器
 + retext   ---markdown
@@ -41,13 +41,13 @@
 + Latex        ----排版
 
 --------------------
-###动手之前
+### 动手之前
 
 + 先了解Git,以[廖雪峰的git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)为参考
 + 学习王爽的[汇编语言](http://product.dangdang.com/23329310.html)
 + 接着学习[markdown简要语法](http://sspai.com/25137)与[markdown语法](http://wowubuntu.com/markdown/#list)
 ----------------------------
-###&lt;&lt;Orange'S 一个操作系统的实现&gt;&gt;目录
+### &lt;&lt;Orange'S 一个操作系统的实现&gt;&gt;目录
 
 上 篇   
 
